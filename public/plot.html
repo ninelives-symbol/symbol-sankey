@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.2/plotly.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://unpkg.com/d3-sankey@0"></script>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    .tooltip {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    body {
+      padding: 20px;
+    }
+    #sankey {
+      margin-top: 20px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <form id="input-form">
+<div class="form-group">
+  <label for="address">Address (single address or comma separated list):</label>
+  <input type="text" class="form-control" id="address" name="address" placeholder="Enter addresses separated by comma">
+</div>
+<div class="form-group">
+  <label for="mosaic">Mosaic ID (hex):</label>
+  <input type="text" class="form-control" id="mosaic" name="mosaic" placeholder="Enter mosaic ID in hexadecimal format" value="6BED913FA20223F8">
+</div>
+      <div class="form-group">
+        <label for="depth">Depth (currently doesn't do anything):</label>
+        <input type="number" class="form-control" id="depth" name="depth" min="1" value="1">
+      </div>
+      <div class="form-group">
+        <label for="minAmount">Minimum Amount (filter by minimum transfer amount - set high if dealing with active accounts):</label>
+        <input type="number" class="form-control" id="minAmount" name="minAmount" min="1" value="1">
+      </div>
+      <div class="form-group">
+        <label for="divisibility">Mosaic divisibility:</label>
+        <input type="number" class="form-control" id="divisibility" name="divisibility" min="0" max="6" value="6">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div id="sankey">
+      <svg></svg>
+    </div>
+  </div>
+
+  <script src="plot.js"></script>
+  
+  <!-- Bootstrap JavaScript and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
